@@ -74,9 +74,21 @@ class GeminiService(private val project: Project) {
         return try {
             val response = currentModel.generateContent(prompt)
             response.text ?: "No response from Gemini"
+        } catch (e: java.net.UnknownHostException) {
+            thisLogger().error("Network error calling Gemini API", e)
+            "Error: Unable to connect to Gemini API. Please check your internet connection."
+        } catch (e: java.io.IOException) {
+            thisLogger().error("IO error calling Gemini API", e)
+            "Error: Network issue - ${e.message}"
         } catch (e: Exception) {
             thisLogger().error("Error calling Gemini API", e)
-            "Error: ${e.message}"
+            when {
+                e.message?.contains("API key", ignoreCase = true) == true -> 
+                    "Error: Invalid API key. Please check your configuration."
+                e.message?.contains("quota", ignoreCase = true) == true ->
+                    "Error: API quota exceeded. Please check your Gemini API usage."
+                else -> "Error: ${e.message ?: "Unknown error occurred"}"
+            }
         }
     }
 

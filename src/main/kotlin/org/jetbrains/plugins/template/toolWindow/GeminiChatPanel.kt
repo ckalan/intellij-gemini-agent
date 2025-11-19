@@ -34,6 +34,9 @@ class GeminiChatPanel(private val project: Project) : JPanel(BorderLayout()) {
     init {
         setupUI()
         loadSettings()
+        
+        // Show welcome message
+        appendToChat("System", "Welcome to Gemini AI Agent! Select a mode and scope, then start chatting.")
     }
     
     private fun setupUI() {

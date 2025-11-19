@@ -20,8 +20,7 @@
         <!-- Gemini Tool Window -->
         <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.GeminiToolWindowFactory" 
                     id="Gemini AI" 
-                    anchor="right"
-                    icon="AllIcons.Actions.Lightning"/>
+                    anchor="right"/>
         
         <!-- Settings -->
         <applicationConfigurable 
@@ -42,16 +41,14 @@
         <action id="GeminiAskAction"
                 class="org.jetbrains.plugins.template.actions.AskGeminiAction"
                 text="Ask Gemini"
-                description="Ask Gemini AI about the selected code"
-                icon="AllIcons.Actions.Help">
+                description="Ask Gemini AI about the selected code">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
         
         <action id="GeminiEditAction"
                 class="org.jetbrains.plugins.template.actions.EditWithGeminiAction"
                 text="Edit with Gemini"
-                description="Request code modifications from Gemini AI"
-                icon="AllIcons.Actions.Edit">
+                description="Request code modifications from Gemini AI">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>
