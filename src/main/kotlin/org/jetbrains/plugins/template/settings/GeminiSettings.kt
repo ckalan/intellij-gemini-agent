@@ -6,6 +6,14 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 
+/**
+ * Persistent settings for the Gemini AI Agent plugin.
+ * 
+ * Stores:
+ * - API key for Google Gemini
+ * - Current chat mode (Ask or Edit)
+ * - Current analysis scope (File or Codebase)
+ */
 @State(
     name = "GeminiSettings",
     storages = [Storage("geminiSettings.xml")]
@@ -23,13 +31,23 @@ class GeminiSettings : PersistentStateComponent<GeminiSettings> {
         XmlSerializerUtil.copyBean(state, this)
     }
 
+    /**
+     * Chat mode determines how Gemini responds.
+     */
     enum class ChatMode {
-        EDIT,  // Mode for editing/modifying code
-        ASK    // Mode for asking questions without modifications
+        /** Mode for editing/modifying code with suggestions */
+        EDIT,
+        /** Mode for asking questions without code modifications */
+        ASK
     }
 
+    /**
+     * Analysis scope determines what context is provided to Gemini.
+     */
     enum class AnalysisScope {
-        FILE,      // File-level analysis
-        CODEBASE   // Codebase-level analysis
+        /** Analyze only the current file */
+        FILE,
+        /** Analyze the entire codebase/project */
+        CODEBASE
     }
 }

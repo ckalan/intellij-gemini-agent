@@ -1,20 +1,37 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# IntelliJ Platform Plugin Template Changelog
+# Gemini AI Agent Changelog
 
 ## [Unreleased]
 
 ### Added
 
-- Add `platformBundledModules` to `gradle.properties` along with `bundledModules()` helper to the Gradle build file
+- **Gemini AI Agent Plugin**: Complete implementation of Google Gemini AI integration
+  - Two interaction modes: Ask (Q&A) and Edit (code modifications)
+  - Two analysis scopes: File-level and Codebase-level
+  - Interactive chat interface in tool window
+  - Settings panel for API key configuration
+  - Editor context menu actions: "Ask Gemini" and "Edit with Gemini"
+  - Context extraction from current file and project structure
+  - Async communication with Google Gemini API
+  - Unit tests for settings and service layer
+  - Comprehensive documentation in GEMINI_AGENT.md
 
 ### Changed
 
-- Dependencies - upgrade `org.jetbrains.intellij.platform` to `2.7.1`
+- Updated plugin name from "IntelliJ Platform Plugin Template" to "Gemini AI Agent"
+- Updated plugin ID to `org.jetbrains.plugins.gemini-agent`
+- Added Google Generative AI SDK (version 0.9.0) dependency
+- Added Kotlin Coroutines (version 1.9.0) dependency
+- Adjusted IntelliJ Platform version to 2024.1 for compatibility
 
-### Fixed
+### Technical Details
 
-- GitHub: Fixed the missing `$RELEASE_NOTE ` parent directory in the Release workflow
+- `GeminiService`: Core service for API communication
+- `GeminiSettings`: Persistent state management
+- `GeminiChatPanel`: Main UI with mode/scope selection
+- `GeminiToolWindowFactory`: Tool window integration
+- Editor actions for quick access from context menu
 
 ## [2.3.0] - 2025-08-09
 

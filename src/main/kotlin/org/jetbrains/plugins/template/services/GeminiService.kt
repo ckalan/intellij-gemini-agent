@@ -8,6 +8,16 @@ import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import kotlinx.coroutines.runBlocking
 
+/**
+ * Service for communicating with Google Gemini AI API.
+ * 
+ * This service handles:
+ * - API key configuration
+ * - Async communication with Gemini
+ * - Generation configuration (temperature, tokens, etc.)
+ * 
+ * @property project The IntelliJ project instance
+ */
 @Service(Service.Level.PROJECT)
 class GeminiService(private val project: Project) {
 
@@ -22,6 +32,11 @@ class GeminiService(private val project: Project) {
         thisLogger().info("GeminiService initialized for project: ${project.name}")
     }
 
+    /**
+     * Configure the Gemini API key and initialize the model.
+     * 
+     * @param key The API key for Google Gemini API
+     */
     fun setApiKey(key: String) {
         apiKey = key
         model = if (key.isNotBlank()) {
@@ -40,8 +55,19 @@ class GeminiService(private val project: Project) {
         }
     }
 
+    /**
+     * Check if the service is properly configured with an API key.
+     * 
+     * @return true if API key is set and not blank
+     */
     fun isConfigured(): Boolean = apiKey?.isNotBlank() == true
 
+    /**
+     * Send a prompt to Gemini AI and get a response asynchronously.
+     * 
+     * @param prompt The text prompt to send to Gemini
+     * @return The response text from Gemini, or an error message
+     */
     suspend fun sendPrompt(prompt: String): String {
         val currentModel = model ?: return "Error: API key not configured"
         
@@ -54,6 +80,12 @@ class GeminiService(private val project: Project) {
         }
     }
 
+    /**
+     * Send a prompt to Gemini AI synchronously (blocking call).
+     * 
+     * @param prompt The text prompt to send to Gemini
+     * @return The response text from Gemini, or an error message
+     */
     fun sendPromptSync(prompt: String): String = runBlocking {
         sendPrompt(prompt)
     }
