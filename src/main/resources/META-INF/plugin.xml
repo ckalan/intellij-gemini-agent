@@ -36,4 +36,23 @@
         <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="org.jetbrains.plugins.template.startup.MyProjectActivity" />
     </extensions>
+
+    <actions>
+        <!-- Editor context menu actions -->
+        <action id="GeminiAskAction"
+                class="org.jetbrains.plugins.template.actions.AskGeminiAction"
+                text="Ask Gemini"
+                description="Ask Gemini AI about the selected code"
+                icon="AllIcons.Actions.Help">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        
+        <action id="GeminiEditAction"
+                class="org.jetbrains.plugins.template.actions.EditWithGeminiAction"
+                text="Edit with Gemini"
+                description="Request code modifications from Gemini AI"
+                icon="AllIcons.Actions.Edit">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
