@@ -1,14 +1,38 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>org.jetbrains.plugins.template</id>
-    <name>IntelliJ Platform Plugin Template</name>
-    <vendor>JetBrains</vendor>
+    <id>org.jetbrains.plugins.gemini-agent</id>
+    <name>Gemini AI Agent</name>
+    <vendor>IntelliJ</vendor>
+
+    <description><![CDATA[
+        IntelliJ AI agent plugin that integrates with Google Gemini API.
+        Features:
+        - Two modes: Ask (Q&A) and Edit (code modifications)
+        - Two analysis scopes: File-level and Codebase-level
+        - Chat interface for interacting with Gemini AI
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- Gemini Tool Window -->
+        <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.GeminiToolWindowFactory" 
+                    id="Gemini AI" 
+                    anchor="right"
+                    icon="AllIcons.Actions.Lightning"/>
+        
+        <!-- Settings -->
+        <applicationConfigurable 
+            parentId="tools"
+            instance="org.jetbrains.plugins.template.settings.GeminiSettingsConfigurable"
+            id="org.jetbrains.plugins.template.settings.GeminiSettingsConfigurable"
+            displayName="Gemini AI Agent"/>
+        
+        <applicationService serviceImplementation="org.jetbrains.plugins.template.settings.GeminiSettings"/>
+        
+        <!-- Original tool window (can be removed if not needed) -->
         <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="org.jetbrains.plugins.template.startup.MyProjectActivity" />
     </extensions>

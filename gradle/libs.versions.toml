@@ -2,6 +2,8 @@
 # libraries
 junit = "4.13.2"
 opentest4j = "1.3.0"
+geminiAi = "0.9.0"
+kotlinxCoroutines = "1.9.0"
 
 # plugins
 changelog = "2.4.0"
@@ -13,6 +15,8 @@ qodana = "2025.1.1"
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 opentest4j = { group = "org.opentest4j", name = "opentest4j", version.ref = "opentest4j" }
+geminiAi = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "geminiAi" }
+kotlinxCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }

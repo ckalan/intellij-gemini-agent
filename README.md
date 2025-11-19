@@ -11,11 +11,16 @@
 > Click the <kbd>Use this template</kbd> button and clone it in IntelliJ IDEA.
 
 <!-- Plugin description -->
-**IntelliJ Platform Plugin Template** is a repository that provides a pure template to make it easier to create a new plugin project (check the [Creating a repository from a template][gh:template] article).
+**Gemini AI Agent** is an IntelliJ IDEA plugin that integrates Google Gemini AI to provide intelligent code assistance. It offers two distinct modes of operation (Ask and Edit) and two analysis scopes (File-level and Codebase-level), similar to VS Code AI agents.
 
-The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.
+**Features:**
+- 🤖 **Ask Mode**: Get answers and explanations without code modifications
+- ✏️ **Edit Mode**: Request and review code modifications with AI suggestions
+- 📄 **File-level Analysis**: Focus on the current file for targeted assistance
+- 🏗️ **Codebase-level Analysis**: Consider the entire project context for broader insights
+- 💬 **Interactive Chat**: Natural conversation interface with Gemini AI
 
-[gh:template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+For detailed documentation, see [GEMINI_AGENT.md](GEMINI_AGENT.md).
 <!-- Plugin description end -->
 
 If you're still not quite sure what this is all about, read our introduction: [What is the IntelliJ Platform?][docs:intro]
